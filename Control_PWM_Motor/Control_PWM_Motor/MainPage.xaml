@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Control_PWM_Motor.MainPage">
+
+    <StackLayout
+        Margin="40">
+
+        <Grid
+            RowSpacing="20">
+            <Label 
+                Grid.Row="0" 
+                Grid.Column="0" 
+                Text="Enable PWM"
+                FontSize="Large"/>
+            
+            <Switch 
+                Grid.Row="0" 
+                Grid.Column="1"
+                ThumbColor="Blue"
+                OnColor="Orange"
+                HorizontalOptions="Center" 
+                IsToggled="{Binding PWMSwitch}"/>
+            
+            <Label 
+                Grid.Row="1" 
+                Grid.Column="0" 
+                Text="Duty Cycle (%)" 
+                FontSize="Large"/>
+            
+            <Label 
+                Grid.Row="2" 
+                Grid.Column="0" 
+                Grid.ColumnSpan="2"
+                Text="{Binding Source={x:Reference slider}, Path=Value}"
+                x:Name="duty_cycle"
+                FontSize="Large"/>
+            
+            <Slider
+                Grid.Row="3" 
+                Grid.Column="0"
+                Grid.ColumnSpan="4" 
+                x:Name="slider"
+                ThumbColor="Blue"
+                MaximumTrackColor="Green"
+                MinimumTrackColor="Red"
+                
+                Value="{Binding DutyCycle, Mode=TwoWay}"
+                Maximum="100"/>
+        </Grid>
+    </StackLayout>
+</ContentPage>
